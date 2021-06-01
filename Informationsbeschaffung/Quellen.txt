@@ -1,0 +1,8 @@
+Informationsbeschaffung:
+
+How to make a text adventure game with gui in java:
+https://ryisnow.net/2017/04/30/how-to-make-a-text-adventure-game-with-gui-in-java/
+https://www.youtube.com/playlist?list=PL_QPQmz5C6WUMB0xEMZosWbyQo_Kil0Fb
+
+Dateien erstellen, lesen und ... Folge 20 Tutorial
+https://www.youtube.com/playlist?list=PLj0NZBHsZJkP_e6ty5iEOr0RnTCgKA5VY

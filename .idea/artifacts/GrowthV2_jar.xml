@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="GrowthV2:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/GrowthV2_jar</output-path>
+    <root id="archive" name="GrowthV2.jar">
+      <element id="module-output" name="GrowthV2" />
+    </root>
+  </artifact>
+</component>
