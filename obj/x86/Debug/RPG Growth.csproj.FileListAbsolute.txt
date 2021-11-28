@@ -1,0 +1,5 @@
+C:\Users\jelle\Documents\Programmieren lernen\Projekte\RPG Growth\obj\x86\Debug\RPG Growth.csprojAssemblyReference.cache
+C:\Users\jelle\Documents\Programmieren lernen\Projekte\RPG Growth\bin\Debug\ConsoleApplication.exe
+C:\Users\jelle\Documents\Programmieren lernen\Projekte\RPG Growth\bin\Debug\ConsoleApplication.pdb
+C:\Users\jelle\Documents\Programmieren lernen\Projekte\RPG Growth\obj\x86\Debug\ConsoleApplication.exe
+C:\Users\jelle\Documents\Programmieren lernen\Projekte\RPG Growth\obj\x86\Debug\ConsoleApplication.pdb
