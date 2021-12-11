@@ -26,7 +26,11 @@ public class animals extends creatures{
         System.out.println("Alter: " +super.getAge());
         System.out.println("Geschlecht: " +super.getSex());
         System.out.println("Lebensraum: " + habitat);
-        System.out.println("Partner: " + paID);
+        if(paID == 0){
+            System.out.println("Partner:");
+        } else {
+            System.out.println("Partner: " + paID);
+        }
         System.out.println("Kinder:");
         for (int child  : chId) {
             System.out.println(" - " +child);
