@@ -4,21 +4,32 @@ public class animals extends creatures{
     private String species;
     private String type;
     private int habitat;
-    private int pid;
-    private int[] did;
+    private int paID;            // PartnerID
+    private int[] chId;          // KinderID
 
-    public animals(int anId, int actualDate, int age, char sex, String species, String type, int habitat,
-                   int pid, int[] did) {
-        super(anId, actualDate, age, sex);
+    public animals(int anId, int age, char sex, String species, String type, int habitat,
+                   int paId, int[] chId) {
+        super(anId, age, sex);
         this.species = species;
         this.type = type;
         this.habitat = habitat;
-        this.pid = pid;
-        this.did = did;
+        this.paID = paId;
+        this.chId = chId;
     }
 
     @Override
     public void display() {
-        System.out.println("Tier!");
+        System.out.println("Tier: " +super.getCrId());
+        System.out.println("Tierart: " +type);
+        System.out.println("Spezies: " +species);
+        System.out.println("Geburtsdatum: " +super.getBirthDate());
+        System.out.println("Alter: " +super.getAge());
+        System.out.println("Geschlecht: " +super.getSex());
+        System.out.println("Lebensraum: " + habitat);
+        System.out.println("Partner: " + paID);
+        System.out.println("Kinder:");
+        for (int child  : chId) {
+            System.out.println(" - " +child);
+        }
     }
 }
