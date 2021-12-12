@@ -23,4 +23,12 @@ public class staff extends creatures {
         System.out.println("Geschlecht: " +super.getSex());
         System.out.println("Pflegeart: " + responsibility);
     }
+
+    public String getResponsibility() {
+        return responsibility;
+    }
+
+    public void setResponsibility(String responsibility) {
+        this.responsibility = responsibility;
+    }
 }

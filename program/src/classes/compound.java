@@ -37,7 +37,23 @@ public class compound {
         }
     }
 
-    public void newResident(int anID) {
-        residents.add(anID);
+    public boolean newResident(int anID) {
+        if (residents.size() < maxResidents) {
+            residents.add(anID);
+            return true;
+        }
+        return false;
+    }
+
+    public ArrayList<Integer> getResidents() {
+        return residents;
+    }
+
+    public void newCares(String care) {
+        cares.add(care);
+    }
+
+    public ArrayList<String> getCares() {
+        return cares;
     }
 }
