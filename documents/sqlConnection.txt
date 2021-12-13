@@ -1,0 +1,8 @@
+private String sqlDriver     = "com.mysql.cj.jdbc.Driver";
+    private String sqlServer     = "localhost";
+    private String sqlServerPort = "3306";
+    private String sqlUser       = "zooverwaltung";
+    private String sqlPassword   = "zooverwaltung";
+    private String sqlDatabase   = "java_zooverwaltung";
+
+    private Connection sqlConnection = null;

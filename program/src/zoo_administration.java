@@ -14,7 +14,7 @@ public class zoo_administration {
 
         ArrayList<classes.staff> mitarbeiter = new ArrayList<>();
         mitarbeiter.add(new classes.staff(1, 24,'m',"Tom",
-                "Schneider", "Pflege"));
+                "Schneider", "Reinigung"));
         mitarbeiter.get(0).display();
 
         System.out.println("---------------------------------");
@@ -24,7 +24,7 @@ public class zoo_administration {
         cares.add("Fütterung");
         ArrayList<classes.compound> compounds = new ArrayList<>();
         compounds.add(new classes.compound(1, "Raubtierhaus",
-                5, 5, cares));
+                1, 5, cares));
         compounds.get(0).display();
 
         System.out.println("Programmende!");
