@@ -1,0 +1,53 @@
+table animals:
+
+INSERT INTO animals (anId, age, sex, species, type, coId)
+	VALUES 	(1, 5, 'm', 'Säugetier', 'Löwe', 1),
+    		(2, 4, 'w', 'Säugetier', 'Löwe', 1),
+    		(3, 1, 'm', 'Säugetier', 'Löwe', 1),
+    		(4, 1, 'w', 'Säugetier', 'Löwe', 1),
+    		(5, 30, 'w', 'Reptil', 'Schildkröte', 2),
+    		(6, 4, 'm', 'Vogel', 'Eule', 3);
+
+table family:
+
+INSERT INTO family (faId, anId, hierarchy)
+	VALUES 	(1, 1, 'father'),
+    		(1, 2, 'mother'),
+            (1, 3, 'child'),
+            (1, 4, 'child');
+
+table compounds:
+INSERT INTO compounds (coId, type, haId, maxResidents)
+	VALUES 	(1, 'Raubtierhaus', 1, 5),
+	        (2, 'Reptilienhaus', 4, 25),
+	        (3, 'Vogelhaus', 5, 15);
+
+table cares:
+INSERT INTO cares (coId, caId)
+	VALUES 	(1,1),
+    		(1, 3),
+            (2, 1),
+            (2, 2),
+            (2, 3),
+            (3, 1),
+            (3, 3);
+
+table care:
+INSERT INTO care (caId, care)
+	VALUES 	(1, 'Reinigung'),
+    		(2, 'Pflege'),
+            (3, 'Fütterung');
+
+table residents:
+INSERT INTO residents (coId, anId)
+	VALUES 	(1, 1),
+    		(1, 2),
+            (1, 3),
+            (1, 4),
+            (2, 5),
+            (3, 6);
+
+table staff:
+INSERT INTO staff (stId, age, sex, firstName, lastName, caId)
+	VALUES 	(1, 24, 'm', 'Tom', 'Schneider', 1),
+    		(2, 32, 'w', 'Lena', 'Hauber', 2);
