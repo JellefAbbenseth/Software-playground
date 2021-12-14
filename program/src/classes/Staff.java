@@ -1,20 +1,22 @@
 package classes;
 
-public class staff extends creatures {
+public class Staff extends Creatures {
     private String firstName;
     private String lastName;
     private String responsibility;
+    private String information;
 
-    public staff(int stId, int age, char sex, String firstName, String lastName,
+    public Staff(int stId, int age, char sex, String firstName, String lastName,
                  String responsibility) {
         super(stId, age, sex);
         this.firstName = firstName;
         this.lastName = lastName;
         this.responsibility = responsibility;
+        this.information = "";
     }
 
     @Override
-    public void display() {
+    public String display() {
         System.out.println("Pflege/r: " +super.getCrId());
         System.out.println("Vorname: " +firstName);
         System.out.println("Nachname: " +lastName);
@@ -22,6 +24,7 @@ public class staff extends creatures {
         System.out.println("Alter: " +super.getAge());
         System.out.println("Geschlecht: " +super.getSex());
         System.out.println("Pflegeart: " + responsibility);
+        return information;
     }
 
     public String getResponsibility() {
