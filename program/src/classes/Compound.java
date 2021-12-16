@@ -9,6 +9,7 @@ public class Compound {
     private int maxResidents;
     private ArrayList<Integer> residents;
     private ArrayList<String> cares;
+    private String information;
 
     public Compound(int coId, String type, int habitat, int maxResidents, ArrayList<String> cares) {
         this.coId = coId;
@@ -17,25 +18,51 @@ public class Compound {
         this.maxResidents = maxResidents;
         this.residents = new ArrayList<>();
         this.cares = cares;
+        information = "";
     }
 
     public String display() {
-        System.out.println("Unterbringung: " +coId);
-        System.out.println("Art der Unterbringung: " +type);
-        System.out.println("Lebensraum: " + habitat);
-        System.out.println("Bewohner:");
+//        System.out.println("Unterbringung: " +coId);
+//        System.out.println("Art der Unterbringung: " +type);
+//        System.out.println("Lebensraum: " + habitat);
+//        System.out.println("Bewohner:");
+//        if(!residents.isEmpty()){
+//            for (Integer resident : residents){
+//                System.out.println(" - " + resident);
+//            }
+//        }
+//        System.out.println("Pflegeart:");
+//        if(!residents.isEmpty()){
+//            for (String care : cares) {
+//                System.out.println(" - " + care);
+//            }
+//        }
+
+        information = String.format("""
+                                    Unterbringung: %s
+                                    Art der Unterbringung: %s
+                                    Lebensraum: %s
+                                    Bewohner:\n
+                                    """,
+                coId,
+                type,
+                habitat);
         if(!residents.isEmpty()){
             for (Integer resident : residents){
-                System.out.println(" - " + resident);
+                information += " - " + resident +"\n";
             }
+        } else {
+            information += " - keine Bewohner\n";
         }
-        System.out.println("Pflegeart:");
+        information += "Pflegeart:\n";
         if(!residents.isEmpty()){
             for (String care : cares) {
-                System.out.println(" - " + care);
+                information += " - " + care +"\n";
             }
+        } else {
+            information += " - aktuell nicht gepflegt/genutzt!";
         }
-        return null;
+        return information;
     }
 
     public boolean newResident(int anID) {

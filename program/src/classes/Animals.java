@@ -42,26 +42,33 @@ public class Animals extends Creatures {
 //        for (int child  : chId) {
 //            System.out.println(" - " +child);
 //        }
-        information = String.format("Tier: %s\n" +
-                                    "Tierart: %d\n" +
-                                    "Spezies: %s\n" +
-                                    "Geburtsdatum: %d\n" +
-                                    "Alter: %d\n" +
-                                    "Geschlecht: %s" +
-                                    "Unterbringung: %d\n",
-                                    super.getCrId(), type, species, super.getBirthDate(),
-                                    super.getAge(), super.getSex(), compound);
+        information = String.format("""
+                                    Tier: %s
+                                    Tierart: %s
+                                    Spezies: %s
+                                    Geburtsdatum: %s
+                                    Alter: %s
+                                    Geschlecht: %s
+                                    Unterbringung: %s
+                                    """,
+                super.getCrId(),
+                type,
+                species,
+                super.getBirthDate(),
+                super.getAge(),
+                super.getSex(),
+                compound);
         if(paID == 0){
             information += "Partner:\n - kein Partner\n";
         } else {
-            information += String.format("Partner: %d\n", paID);
+            information += String.format("Partner: %s\n", paID);
         }
         information += "Kinder:\n";
         if (chId.size() == 0) {
             information += " - keine Kinder\n";
         }
         for (int child  : chId) {
-            information += String.format(" - %d", child);
+            information += String.format(" - %s", child);
         }
         return information;
     }

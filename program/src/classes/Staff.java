@@ -17,13 +17,30 @@ public class Staff extends Creatures {
 
     @Override
     public String display() {
-        System.out.println("Pflege/r: " +super.getCrId());
-        System.out.println("Vorname: " +firstName);
-        System.out.println("Nachname: " +lastName);
-        System.out.println("Geburtsdatum: " +super.getBirthDate());
-        System.out.println("Alter: " +super.getAge());
-        System.out.println("Geschlecht: " +super.getSex());
-        System.out.println("Pflegeart: " + responsibility);
+//        System.out.println("Pflege/r: " +super.getCrId());
+//        System.out.println("Vorname: " +firstName);
+//        System.out.println("Nachname: " +lastName);
+//        System.out.println("Geburtsdatum: " +super.getBirthDate());
+//        System.out.println("Alter: " +super.getAge());
+//        System.out.println("Geschlecht: " +super.getSex());
+//        System.out.println("Pflegeart: " + responsibility);
+
+        information = String.format("""
+                                    Pflege/r: %s
+                                    Vorname: %s
+                                    Nachname: %s
+                                    Geburtsdatum: %s
+                                    Alter: %s
+                                    Geschlecht: %s
+                                    Pflegeart: %s
+                                    """,
+                super.getCrId(),
+                firstName,
+                lastName,
+                super.getBirthDate(),
+                super.getAge(),
+                super.getSex(),
+                responsibility);
         return information;
     }
 
