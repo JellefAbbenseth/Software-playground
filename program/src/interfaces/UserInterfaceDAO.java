@@ -9,7 +9,13 @@ public interface UserInterfaceDAO {
         Wait for User action
     */
     // Introduction
-
+    /*
+        Show Menu:
+            1 Show all
+            2 Add animals/compounds/staff
+            3 change compound
+            4 delete animals/compounds/staff
+     */
     // Create
     // Read
     // Update
