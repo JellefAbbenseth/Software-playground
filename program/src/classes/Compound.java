@@ -42,7 +42,7 @@ public class Compound {
                                     Unterbringung: %s
                                     Art der Unterbringung: %s
                                     Lebensraum: %s
-                                    Bewohner:\n
+                                    Bewohner:
                                     """,
                 coId,
                 type,

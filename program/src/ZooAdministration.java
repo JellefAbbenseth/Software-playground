@@ -2,6 +2,7 @@ import classes.Animals;
 import classes.Compound;
 import classes.Staff;
 import connectors.SQLZooData;
+import connectors.UserSystemInterface;
 import interfaces.ZooAdmDAO;
 
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 public class ZooAdministration {
 
     private static ZooAdmDAO zooAdmin = new SQLZooData();
+    private static connectors.UserSystemInterface userInterface;
 
     public static void main(String[] args) {
         /*
@@ -35,10 +37,10 @@ public class ZooAdministration {
         System.out.println(text);
         System.out.println("---------------------------------");
 
-        ArrayList<Staff> mitarbeiter = new ArrayList<>();
-        mitarbeiter.add(new Staff(1, 24,'m',"Tom",
+        ArrayList<Staff> staff = new ArrayList<>();
+        staff.add(new Staff(1, 24,'m',"Tom",
                 "Schneider", "Reinigung"));
-        text = mitarbeiter.get(0).display();
+        text = staff.get(0).display();
         System.out.println(text);
         System.out.println("---------------------------------");
 
@@ -50,6 +52,11 @@ public class ZooAdministration {
                 1, 5, cares));
         text = compounds.get(0).display();
         System.out.println(text);
+        System.out.println("*********************************");
+
+        userInterface = new UserSystemInterface(animals, staff, compounds);
+        userInterface.menu();
+
         System.out.println("Programmende!");
     }
 }
