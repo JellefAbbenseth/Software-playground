@@ -61,6 +61,16 @@ public class Compound {
         return residents;
     }
 
+    public boolean deleteResident(int anID){
+        for (int i = 0; i < residents.size(); i++){
+            if (residents.get(i).equals(anID)) {
+                residents.remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void newCares(String care) {
         cares.add(care);
     }
