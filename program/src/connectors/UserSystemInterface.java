@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserSystemInterface implements UserInterfaceDAO {
-    private static Scanner input = new Scanner(System.in);
+    private static final Scanner INPUT = new Scanner(System.in);
 
     ArrayList<Animals> animals;
     ArrayList<Staff> staff;
@@ -40,7 +40,7 @@ public class UserSystemInterface implements UserInterfaceDAO {
             System.out.println("6 - Programm beenden");
 
             System.out.println("Ihre Auswahl: ");
-            choice = input.nextInt();
+            choice = INPUT.nextInt();
             goOn = selectionMainMenu(choice);
         }
     }
@@ -59,7 +59,7 @@ public class UserSystemInterface implements UserInterfaceDAO {
                     System.out.println("3 - Mitarbeiter");
 
                     System.out.println("Ihre Auswahl: ");
-                    choice = input.nextInt();
+                    choice = INPUT.nextInt();
                     tryAgain = insertMenu(choice);
                 } while(tryAgain);
                 break;
@@ -72,7 +72,7 @@ public class UserSystemInterface implements UserInterfaceDAO {
                     System.out.println("3 - Mitarbeiter");
 
                     System.out.println("Ihre Auswahl: ");
-                    choice = input.nextInt();
+                    choice = INPUT.nextInt();
                     tryAgain = showMenu(choice);
                 } while(tryAgain);
                 break;
@@ -85,7 +85,7 @@ public class UserSystemInterface implements UserInterfaceDAO {
                     System.out.println("3 - Mitarbeiter");
 
                     System.out.println("Ihre Auswahl: ");
-                    choice = input.nextInt();
+                    choice = INPUT.nextInt();
                     tryAgain = modifyMenu(choice);
                 } while(tryAgain);
                 break;
@@ -198,7 +198,7 @@ public class UserSystemInterface implements UserInterfaceDAO {
     public void updateObject(String type) {
         if (type == "compounds") {
             System.out.println("Welche Unterbringung ändern?");
-            choice = input.nextInt();
+            choice = INPUT.nextInt();
             if (choice < compounds.size()) {
                 compoundChange(choice);
             } else {
@@ -206,15 +206,15 @@ public class UserSystemInterface implements UserInterfaceDAO {
             }
         } else if (type == "animals") {
             System.out.println("Welches Tier ändern?");
-            choice = input.nextInt();
+            choice = INPUT.nextInt();
             if (choice < animals.size()) {
-                animalsChange(choice);
+                animalChange(choice);
             } else {
                 System.out.println("Kein Tier mit dieser ID vorhanden!");
             }
         } else {
             System.out.println("Welchen Mitarbeiter ändern?");
-            choice = input.nextInt();
+            choice = INPUT.nextInt();
             if (choice < staff.size()) {
                 staffChange(choice);
             } else {
@@ -234,11 +234,11 @@ public class UserSystemInterface implements UserInterfaceDAO {
             System.out.println("1 - hinzufügen");
             System.out.println("2 - abbrechen");
             System.out.println("Ihre Auswahl:");
-            choice = input.nextInt();
+            choice = INPUT.nextInt();
             switch (choice) {
                 case 1:
                     System.out.println("Bitte geben Sie die Art der Pflege an:");
-                    text = input.next();
+                    text = INPUT.next();
                     staff.get(x).setResponsibility(text);
                 case 2:
                     tryAgain = false;
@@ -253,7 +253,7 @@ public class UserSystemInterface implements UserInterfaceDAO {
         System.out.println(text);
     }
 
-    private void animalsChange(int choice) {
+    private void animalChange(int choice) {
         x = choice;
         System.out.println("Tier:");
         text = animals.get(x).display();
@@ -264,15 +264,21 @@ public class UserSystemInterface implements UserInterfaceDAO {
             System.out.println("2 - Partner hinzufügen/ändern");
             System.out.println("3 - Kind hinzufügen");
             System.out.println("Ihre Auswahl:");
-            choice = input.nextInt();
+            choice = INPUT.nextInt();
             int id;
             switch (choice) {
                 case 1:
                     System.out.println("Bitte geben Sie die ID der Unterbringung an:");
-                    id = input.nextInt();
+                    id = INPUT.nextInt();
                     if (id < compounds.size()) {
                         int oldId = animals.get(x).getCompound();
-                        // Compound, delete old resident!!
+                        boolean success = compounds.get(oldId).deleteResident(x);
+                        if (success) {
+                            System.out.println("Das Tier ist erfolgreich ausgezogen!");
+                        } else {
+                            System.out.println("Das Tier war nicht als Bewohner eingetragen!");
+                        }
+                        compounds.get(id).newResident(x);
                         animals.get(x).setCompound(id);
                     } else {
                         System.out.println("Diese Unterbringung existiert nicht!");
@@ -281,7 +287,7 @@ public class UserSystemInterface implements UserInterfaceDAO {
                     break;
                 case 2:
                     System.out.println("Bitte geben Sie die ID des Partners an:");
-                    id = input.nextInt();
+                    id = INPUT.nextInt();
                     if (id < animals.size()) {
                         animals.get(x).setPaID(id);
                     } else {
@@ -291,7 +297,7 @@ public class UserSystemInterface implements UserInterfaceDAO {
                     break;
                 case 3:
                     System.out.println("Bitte geben Sie die ID des Kindes an:");
-                    id = input.nextInt();
+                    id = INPUT.nextInt();
                     if (id < animals.size()) {
                         animals.get(x).newChild(id);
                     } else {
@@ -320,11 +326,11 @@ public class UserSystemInterface implements UserInterfaceDAO {
             System.out.println("1 - hinzufügen");
             System.out.println("2 - abbrechen");
             System.out.println("Ihre Auswahl:");
-            choice = input.nextInt();
+            choice = INPUT.nextInt();
             switch (choice) {
                 case 1:
                     System.out.println("Bitte geben Sie die Art der Unterbringung an:");
-                    text = input.next();
+                    text = INPUT.next();
                     compounds.get(x).newCares(text);
                 case 2:
                     tryAgain = false;
