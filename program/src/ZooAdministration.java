@@ -47,9 +47,12 @@ public class ZooAdministration {
         ArrayList<String> cares = new ArrayList<>();
         cares.add("Pflege");
         cares.add("Fütterung");
+        cares.add("Reinigung");
+        ArrayList<Integer> residents = new ArrayList<>();
+        residents.add(1);
         ArrayList<Compound> compounds = new ArrayList<>();
         compounds.add(new Compound(1, "Raubtierhaus",
-                1, 5, cares));
+                1, 5, residents, cares));
         text = compounds.get(0).display();
         System.out.println(text);
         System.out.println("*********************************");

@@ -11,12 +11,12 @@ public class Compound {
     private ArrayList<String> cares;
     private String information;
 
-    public Compound(int coId, String type, int habitat, int maxResidents, ArrayList<String> cares) {
+    public Compound(int coId, String type, int habitat, int maxResidents,ArrayList<Integer> residents, ArrayList<String> cares) {
         this.coId = coId;
         this.type = type;
         this.habitat = habitat;
         this.maxResidents = maxResidents;
-        this.residents = new ArrayList<>();
+        this.residents = residents;
         this.cares = cares;
         information = "";
     }
@@ -39,7 +39,7 @@ public class Compound {
             information += " - keine Bewohner\n";
         }
         information += "Pflegeart:\n";
-        if(!residents.isEmpty()){
+        if(!cares.isEmpty()){
             for (String care : cares) {
                 information += " - " + care +"\n";
             }
@@ -47,6 +47,10 @@ public class Compound {
             information += " - aktuell nicht gepflegt/genutzt!";
         }
         return information;
+    }
+
+    public int getId() {
+        return coId;
     }
 
     public boolean newResident(int anID) {

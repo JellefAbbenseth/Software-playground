@@ -16,12 +16,16 @@ public class UserSystemInterface implements UserInterfaceDAO {
     ArrayList<Compound> compounds;
     ArrayList<Integer> childrenIds;
     ArrayList<String> cares;
+    ArrayList<Integer> residents;
 
 
     private boolean goOn = true;
     private boolean tryAgain = false;
     private String text = "";
     private String type = "";
+    private String firstName;
+    private String lastName;
+    private String responsibility;
     private char sex;
     private int choice;
     private int x;
@@ -56,12 +60,13 @@ public class UserSystemInterface implements UserInterfaceDAO {
             choice = INPUT.nextInt();
             goOn = selectionMainMenu(choice);
         }
+        INPUT.close();
     }
 
     private boolean selectionMainMenu(int choice) {
         switch (choice) {
             case 1:
-                System.out.println("Alles angezeigt!");
+                showAll();
                 break;
             case 2:
                 do {
@@ -103,7 +108,17 @@ public class UserSystemInterface implements UserInterfaceDAO {
                 } while(tryAgain);
                 break;
             case 5:
-                System.out.println("Etwas gelöscht!");
+                do {
+                    System.out.println("Löschen");
+                    System.out.println("====================");
+                    System.out.println("1 - Unterbringung");
+                    System.out.println("2 - Tiere");
+                    System.out.println("3 - Mitarbeiter");
+
+                    System.out.println("Ihre Auswahl: ");
+                    choice = INPUT.nextInt();
+                    tryAgain = deleteMenu(choice);
+                } while(tryAgain);
                 break;
             case 6:
                 System.out.println("Programm wird beendet!");
@@ -112,6 +127,54 @@ public class UserSystemInterface implements UserInterfaceDAO {
                 System.out.println("Keine Gültige Eingabe, bitte wiederholen!");
         }
         return true;
+    }
+
+    private boolean deleteMenu(int choice) {
+        switch (choice) {
+            case 1:
+                deleteObject("compounds");
+                break;
+            case 2:
+                deleteObject("animals");
+                break;
+            case 3:
+                deleteObject("staff");
+                break;
+            default:
+                System.out.println("Keine Gültige Eingabe, bitte wiederholen!");
+                return true;
+        }
+        return false;
+    }
+
+    private void showAll() {
+        System.out.println("\n------------------------------");
+        System.out.println("Unterbringungen: ");
+        for (int i = 0; i < compounds.size(); i++) {
+            text = compounds.get(i).display();
+            System.out.println(text);
+            System.out.println("Tiere in der Unterbringung:");
+            residents = compounds.get(i).getResidents();
+            for (int j = 0; j < residents.size(); j++) {
+                for (int k = 0; k < animals.size(); k++) {
+                    if (residents.get(j) == animals.get(k).getCrId()) {
+                        text = animals.get(k).display();
+                        System.out.println(text);
+                    }
+                }
+            }
+            System.out.println("Mitarbeiter zuständig:");
+            cares = compounds.get(i).getCares();
+            for (int j = 0; j < cares.size(); j++) {
+                for (int k = 0; k < staff.size(); k++) {
+                    if (cares.get(j).equals(staff.get(k).getResponsibility())) {
+                        text = staff.get(k).display();
+                        System.out.println(text);
+                    }
+                }
+            }
+        }
+        System.out.println("------------------------------\n");
     }
 
     private boolean modifyMenu(int choice) {
@@ -188,7 +251,7 @@ public class UserSystemInterface implements UserInterfaceDAO {
         coId = INPUT.nextInt();
         System.out.println("Hat das Tier eine/n Partner/in: j/n");
         String answer = INPUT.next();
-        if (answer == "j") {
+        if (answer.equals("j")) {
             System.out.println("Bitte den Partner angeben:");
             paId = INPUT.nextInt();
         } else {
@@ -216,6 +279,14 @@ public class UserSystemInterface implements UserInterfaceDAO {
         System.out.println("Bitte die maximale Anzahl an Bewohner angeben:");
         maxResidents = INPUT.nextInt();
         cares = new ArrayList<>();
+        System.out.println("Wie viele Tiere leben in der Unterbringung?");
+        number = INPUT.nextInt();
+        if (number > 0) {
+            for (int i = 0; i < number; i++) {
+                System.out.println("Bitte gib die Id des Tieres an: ");
+                residents.add(INPUT.nextInt());
+            }
+        }
         System.out.println("Wie viele Pflegearten hat die Unterbringung?");
         number = INPUT.nextInt();
         if (number > 0) {
@@ -225,11 +296,22 @@ public class UserSystemInterface implements UserInterfaceDAO {
             }
         }
         compounds.add(new Compound(coId, type,
-                habitat, maxResidents, cares));
+                habitat, maxResidents, residents, cares));
     }
 
     @Override
     public void insertStaff() {
+        id = this.staff.size() + 1;
+        System.out.println("Bitte den Vornamen eingeben: ");
+        firstName = INPUT.next();
+        System.out.println("Bitte den Nachnamen eingeben: ");
+        lastName = INPUT.next();
+        System.out.println("Bitte das Alter eingeben: ");
+        age = INPUT.nextInt();
+        System.out.println("Bitte die Pflegeart eingeben: ");
+        responsibility = INPUT.next();
+        staff.add(new Staff(id, age,sex,firstName,
+                lastName, responsibility));
     }
 
     @Override
@@ -259,7 +341,7 @@ public class UserSystemInterface implements UserInterfaceDAO {
             System.out.println("Welche Unterbringung ändern?");
             choice = INPUT.nextInt();
             if (choice < compounds.size()) {
-                compoundChange(choice);
+                compoundChange(choice + 1);
             } else {
                 System.out.println("Keine Unterbringung mit dieser ID vorhanden!");
             }
@@ -267,7 +349,7 @@ public class UserSystemInterface implements UserInterfaceDAO {
             System.out.println("Welches Tier ändern?");
             choice = INPUT.nextInt();
             if (choice < animals.size()) {
-                animalChange(choice);
+                animalChange(choice + 1);
             } else {
                 System.out.println("Kein Tier mit dieser ID vorhanden!");
             }
@@ -275,7 +357,7 @@ public class UserSystemInterface implements UserInterfaceDAO {
             System.out.println("Welchen Mitarbeiter ändern?");
             choice = INPUT.nextInt();
             if (choice < staff.size()) {
-                staffChange(choice);
+                staffChange(choice + 1);
             } else {
                 System.out.println("Kein Tier mit dieser ID vorhanden!");
             }
@@ -383,14 +465,33 @@ public class UserSystemInterface implements UserInterfaceDAO {
 
         do {
             System.out.println("1 - hinzufügen");
-            System.out.println("2 - abbrechen");
+            System.out.println("2 - weiter");
             System.out.println("Ihre Auswahl:");
             choice = INPUT.nextInt();
             switch (choice) {
                 case 1:
-                    System.out.println("Bitte geben Sie die Art der Unterbringung an:");
+                    System.out.println("Bitte geben Sie die Art der Pflege an:");
                     text = INPUT.next();
                     compounds.get(x).newCares(text);
+                case 2:
+                    tryAgain = false;
+                    break;
+                default:
+                    System.out.println("Keine Gültige Eingabe, bitte erneut versuchen!");
+                    tryAgain = true;
+            }
+        } while (tryAgain);
+        do {
+            System.out.println("Möchten Sie Tiere hinzufügen?");
+            System.out.println("1 - hinzufügen");
+            System.out.println("2 - weiter");
+            System.out.println("Ihre Auswahl:");
+            choice = INPUT.nextInt();
+            switch (choice) {
+                case 1:
+                    System.out.println("Bitte geben Sie die Id des Tieres an:");
+                    id = INPUT.nextInt();
+                    compounds.get(x).newResident(id);
                 case 2:
                     tryAgain = false;
                     break;
@@ -406,6 +507,36 @@ public class UserSystemInterface implements UserInterfaceDAO {
 
     @Override
     public void deleteObject(String type) {
-
+        switch (type) {
+            case "compounds":
+                System.out.println("Bitte Id der zu löschenden Unterbringung eingeben:");
+                id = INPUT.nextInt();
+                for (int i = 0; i < compounds.size(); i++) {
+                    if (compounds.get(i).getId() == id) {
+                        compounds.remove(i);
+                    }
+                }
+                break;
+            case "animals":
+                System.out.println("Bitte Id des zu löschenden Tieres eingeben:");
+                id = INPUT.nextInt();
+                for (int i = 0; i < animals.size(); i++) {
+                    if (animals.get(i).getCrId() == id) {
+                        animals.remove(i);
+                    }
+                }
+                break;
+            case "staff":
+                System.out.println("Bitte Id des zu löschenden Mitarbeiters eingeben:");
+                id = INPUT.nextInt();
+                for (int i = 0; i < staff.size(); i++) {
+                    if (staff.get(i).getCrId() == id) {
+                        staff.remove(i);
+                    }
+                }
+                break;
+            default:
+                System.out.println("Keine Gültige Eingabe!");
+        }
     }
 }
