@@ -14,12 +14,25 @@ public class UserSystemInterface implements UserInterfaceDAO {
     ArrayList<Animals> animals;
     ArrayList<Staff> staff;
     ArrayList<Compound> compounds;
+    ArrayList<Integer> childrenIds;
+    ArrayList<String> cares;
+
 
     private boolean goOn = true;
     private boolean tryAgain = false;
     private String text = "";
+    private String type = "";
+    private char sex;
     private int choice;
     private int x;
+    private int id;
+    private int age;
+    private int coId;
+    private int paId;
+    private int number;
+    private int habitat;
+    private int maxResidents;
+
 
     public UserSystemInterface(ArrayList<Animals> a, ArrayList<Staff> s, ArrayList<Compound> c) {
         this.animals = a;
@@ -159,18 +172,64 @@ public class UserSystemInterface implements UserInterfaceDAO {
     }
 
     @Override
-    public boolean insertAnimal() {
-        return false;
+    public void insertAnimal() {
+        childrenIds = new ArrayList<>();
+        id = this.animals.size() + 1;
+        System.out.println("Bitte ein Alter angeben:");
+        age = INPUT.nextInt();
+        System.out.println("Bitte das Geschlecht angeben:");
+        text = INPUT.next();
+        sex = text.charAt(0);
+        System.out.println("Bitte die Spezies angeben:");
+        String species = INPUT.next();
+        System.out.println("Bitte die Tierart angeben:");
+        String type = INPUT.next();
+        System.out.println("Bitte die Unterbringung angeben:");
+        coId = INPUT.nextInt();
+        System.out.println("Hat das Tier eine/n Partner/in: j/n");
+        String answer = INPUT.next();
+        if (answer == "j") {
+            System.out.println("Bitte den Partner angeben:");
+            paId = INPUT.nextInt();
+        } else {
+            paId = 0;
+        }
+        System.out.println("Wie viele Kinder hat das Tier?");
+        number = INPUT.nextInt();
+        if (number > 0) {
+            for (int i = 0; i < number; i++) {
+                System.out.printf("Bitte gib die Id des %d. Kindes an: ", i);
+                childrenIds.add(INPUT.nextInt());
+            }
+        }
+        animals.add(new Animals(id, age, sex, species,
+                type, coId, paId, childrenIds));
     }
 
     @Override
-    public boolean insertCompound() {
-        return false;
+    public void insertCompound() {
+        id = this.compounds.size() + 1;
+        System.out.println("Bitte den Namen der Unterbringung angeben:");
+        type = INPUT.next();
+        System.out.println("Bitte die Art der Unterbringung angeben:");
+        habitat = INPUT.nextInt();
+        System.out.println("Bitte die maximale Anzahl an Bewohner angeben:");
+        maxResidents = INPUT.nextInt();
+        cares = new ArrayList<>();
+        System.out.println("Wie viele Pflegearten hat die Unterbringung?");
+        number = INPUT.nextInt();
+        if (number > 0) {
+            for (int i = 0; i < number; i++) {
+                System.out.println("Bitte gib die Pflegeart an: ");
+                cares.add(INPUT.next());
+            }
+        }
+        compounds.add(new Compound(coId, type,
+                habitat, maxResidents, cares));
     }
 
     @Override
-    public boolean insertStaff() {
-        return false;
+    public void insertStaff() {
     }
 
     @Override

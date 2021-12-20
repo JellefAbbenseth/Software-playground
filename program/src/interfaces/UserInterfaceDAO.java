@@ -1,11 +1,5 @@
 package interfaces;
 
-import classes.Animals;
-import classes.Compound;
-import classes.Staff;
-
-import java.util.ArrayList;
-
 public interface UserInterfaceDAO {
     // Create UserInterface (System output or GUI, ... )
     /*
@@ -25,9 +19,9 @@ public interface UserInterfaceDAO {
     public void menu();
 
     // Create
-    public boolean insertAnimal();
-    public boolean insertCompound();
-    public boolean insertStaff();
+    public void insertAnimal();
+    public void insertCompound();
+    public void insertStaff();
 
     // Read
     public void objectRead(String type);
