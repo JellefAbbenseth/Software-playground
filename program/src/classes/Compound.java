@@ -22,22 +22,6 @@ public class Compound {
     }
 
     public String display() {
-//        System.out.println("Unterbringung: " +coId);
-//        System.out.println("Art der Unterbringung: " +type);
-//        System.out.println("Lebensraum: " + habitat);
-//        System.out.println("Bewohner:");
-//        if(!residents.isEmpty()){
-//            for (Integer resident : residents){
-//                System.out.println(" - " + resident);
-//            }
-//        }
-//        System.out.println("Pflegeart:");
-//        if(!residents.isEmpty()){
-//            for (String care : cares) {
-//                System.out.println(" - " + care);
-//            }
-//        }
-
         information = String.format("""
                                     Unterbringung: %s
                                     Art der Unterbringung: %s
