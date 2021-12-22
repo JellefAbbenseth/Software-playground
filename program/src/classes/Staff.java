@@ -36,6 +36,14 @@ public class Staff extends Creatures {
         return information;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
     public String getResponsibility() {
         return responsibility;
     }

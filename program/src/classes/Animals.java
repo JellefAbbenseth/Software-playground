@@ -4,13 +4,13 @@ public class Animals extends Creatures {
     private String information;
     private String species;
     private String type;
-    private int compound;
+    private int coId;
 
     public Animals(int anId, int age, char sex, String species, String type, int coId) {
         super(anId, age, sex);
         this.species = species;
         this.type = type;
-        this.compound = coId;
+        this.coId = coId;
         this.information = "";
     }
 
@@ -31,15 +31,23 @@ public class Animals extends Creatures {
                 super.getBirthDate(),
                 super.getAge(),
                 super.getSex(),
-                compound);
+                coId);
         return information;
     }
 
-    public void setCompound(int compound) {
-        this.compound = compound;
+    public void setCoId(int coId) {
+        this.coId = coId;
     }
 
-    public int getCompound() {
-        return compound;
+    public int getCoId() {
+        return coId;
+    }
+
+    public String getSpecies() {
+        return species;
+    }
+
+    public String getType() {
+        return type;
     }
 }

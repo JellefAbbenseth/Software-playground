@@ -13,5 +13,6 @@ public interface ZooAdmDAO {
     public ArrayList<Compound> getCompound();
 
     // Write
-    public boolean writeAll(classes.Animals animals, classes.Compound compounds, classes.Staff staff);
+    public void writeAll(ArrayList<Animals> animals, ArrayList<Compound> compounds,
+                         ArrayList<Staff> staff);
 }

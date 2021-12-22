@@ -4,12 +4,14 @@ import classes.Animals;
 import classes.Compound;
 import classes.Staff;
 import interfaces.UserInterfaceDAO;
+import interfaces.ZooAdmDAO;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserSystemInterface implements UserInterfaceDAO {
     private static final Scanner INPUT = new Scanner(System.in);
+    private final ZooAdmDAO zooAdmin;
 
     ArrayList<Animals> animals;
     ArrayList<Staff> staff;
@@ -29,16 +31,16 @@ public class UserSystemInterface implements UserInterfaceDAO {
     private int id;
     private int age;
     private int coId;
-    private int number;
     private int habitat;
     private int maxResidents;
     private int stId;
 
 
-    public UserSystemInterface(ArrayList<Animals> a, ArrayList<Staff> s, ArrayList<Compound> c) {
+    public UserSystemInterface(ArrayList<Animals> a, ArrayList<Staff> s, ArrayList<Compound> c, ZooAdmDAO zooAdmin) {
         this.animals = a;
         this.staff = s;
         this.compounds = c;
+        this.zooAdmin = zooAdmin;
     }
 
     @Override
@@ -119,6 +121,7 @@ public class UserSystemInterface implements UserInterfaceDAO {
                 break;
             case 6:
                 System.out.println("Programm wird beendet!");
+                zooAdmin.writeAll(animals,compounds,staff);
                 return false;
             default:
                 System.out.println("Keine Gültige Eingabe, bitte wiederholen!");
@@ -145,6 +148,9 @@ public class UserSystemInterface implements UserInterfaceDAO {
     }
 
     private void showAll() {
+
+        // Überarbeiten notwendig!!
+
         System.out.println("\n------------------------------");
         System.out.println("Unterbringungen: ");
         for (int i = 0; i < compounds.size(); i++) {
@@ -231,16 +237,25 @@ public class UserSystemInterface implements UserInterfaceDAO {
 
     @Override
     public void insertCompound() {
-        id = this.compounds.size() + 1;
+        id = compounds.size() + 1;
+        System.out.println("Anzahl Gebäude: " +id);
         System.out.println("Bitte den Namen der Unterbringung angeben:");
         type = INPUT.next();
+        System.out.println("""
+                            1 - Land
+                            2 - Wasser
+                            3 - Luft
+                            4 - Land, Wasser
+                            5 - Wasser, Luft
+                            6 - Land, Wasser, Luft
+                            """);
         System.out.println("Bitte die Art der Unterbringung angeben:");
         habitat = INPUT.nextInt();
         System.out.println("Bitte die maximale Anzahl an Bewohner angeben:");
         maxResidents = INPUT.nextInt();
         System.out.println("Bitte geben Sie den Pfleger an:");
         stId = INPUT.nextInt();
-        compounds.add(new Compound(coId, type,
+        compounds.add(new Compound(id, type,
                 habitat, maxResidents, stId));
     }
 
@@ -356,7 +371,7 @@ public class UserSystemInterface implements UserInterfaceDAO {
                     System.out.println("Bitte geben Sie die ID der Unterbringung an:");
                     id = INPUT.nextInt();
                     if (id < compounds.size()) {
-                        animals.get(x).setCompound(id);
+                        animals.get(x).setCoId(id);
                     } else {
                         System.out.println("Diese Unterbringung existiert nicht!");
                     }
