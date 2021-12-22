@@ -58,10 +58,6 @@ public class SQLZooData implements ZooAdmDAO {
     @Override
     public ArrayList<Animals> getAnimals() {
         animals = new ArrayList<>();
-        ArrayList<Integer> childrenIds = new ArrayList<>();
-        ArrayList<Integer> faIds = new ArrayList<>();
-        ArrayList<Integer> anIds = new ArrayList<>();
-        ArrayList<String> hierarchies = new ArrayList<>();
 
         /*
             Arraylist<Animals>:
@@ -74,7 +70,6 @@ public class SQLZooData implements ZooAdmDAO {
          */
 
         String insertQuery = "SELECT * FROM animals";
-        int x = 0;
         try {
             PreparedStatement selectCommand = sqlConnection.prepareStatement(insertQuery);
             ResultSet ergebnisZeile = selectCommand.executeQuery();
@@ -87,8 +82,7 @@ public class SQLZooData implements ZooAdmDAO {
                 int coId = ergebnisZeile.getInt("coId");
                 // new animal
                 animals.add(new Animals(anId, age, sex, species,
-                        type, coId, 0, childrenIds));
-                x++;
+                        type, coId));
             }
             selectCommand.close();
         } catch (SQLException throwables) {
@@ -98,73 +92,8 @@ public class SQLZooData implements ZooAdmDAO {
         for (int i = 0; i < animals.size(); i++) {
             System.out.println(animals.get(i).display());
         }
-        System.out.println(x);
 
-        insertQuery = "SELECT faId FROM family";
-        try {
-            x = 0;
-            PreparedStatement selectCommand = sqlConnection.prepareStatement(insertQuery);
-            ResultSet ergebnisZeile = selectCommand.executeQuery();
-            while (ergebnisZeile.next()) {
-                if (x < ergebnisZeile.getInt("faId")) {
-                    x = ergebnisZeile.getInt("faId");
-                }
-            }
-        }catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-
-        System.out.println("Anzahl: " + x);
-        if (x > 0) {
-            for (int i = 0; i < x; i++) {
-                ArrayList<Integer> children = new ArrayList<>();
-                int fatherId = 0;
-                int motherId = 0;
-                String text = "SELECT anId, hierarchy FROM family WHERE faId = " + (i + 1);
-                insertQuery = text;
-                try {
-                    PreparedStatement selectCommand = sqlConnection.prepareStatement(insertQuery);
-                    ResultSet ergebnisZeile = selectCommand.executeQuery();
-                    while (ergebnisZeile.next()) {
-                        if (ergebnisZeile.getString("hierarchy").equals("father")) {
-                            fatherId = ergebnisZeile.getInt("anId");
-                        } else if (ergebnisZeile.getString("hierarchy").equals("mother")) {
-                            motherId = ergebnisZeile.getInt("anId");
-                        } else {
-                            children.add(ergebnisZeile.getInt("anId"));
-                        }
-                    }
-                    selectCommand.close();
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
-                }
-
-                System.out.println(children);
-
-                for (int j = 0; j < animals.size(); j++) {
-                    if (fatherId == animals.get(j).getCrId()) {
-                        animals.get(j).setPaID(motherId);
-                        System.out.println("wife added");
-                        for (int k = 0; k < children.size(); k++) {
-                            System.out.println("child added");
-                            animals.get(j).newChild(children.get(k));
-                        }
-                    }
-                    else if (motherId == animals.get(j).getCrId()) {
-                        animals.get(j).setPaID(fatherId);
-                        System.out.println("husband added");
-                        for (int k = 0; k < children.size(); k++) {
-                            animals.get(j).newChild(children.get(k));
-                        }
-                    }
-                }
-            }
-        }
-        System.out.println("TestAnimals after adding children:");
-        for (int i = 0; i < animals.size(); i++) {
-            System.out.println(animals.get(i).display());
-        }
-        return null;
+        return animals;
     }
 
     @Override
