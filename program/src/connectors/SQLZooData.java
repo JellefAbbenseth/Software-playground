@@ -156,7 +156,7 @@ public class SQLZooData implements ZooAdmDAO {
             deleteTransaction = sqlConnection.setSavepoint();
             for (String tableName : tableNames) {
                 PreparedStatement deleteCommand = sqlConnection.prepareStatement(
-                        "DELETE * FROM " +  tableName);
+                        "DELETE FROM " +  tableName);
                 deleteCommand.executeUpdate();
             }
             sqlConnection.commit();
@@ -174,8 +174,8 @@ public class SQLZooData implements ZooAdmDAO {
 
         for (int i = 0; i < animals.size(); i++) {
             insertQuery.add("INSERT INTO animals (anId, age, sex, species, type, coId) VALUES ("
-                    + animals.get(i).getCrId() +", " + animals.get(i).getAge() +", "
-                    + animals.get(i).getSex() +", '" + animals.get(i).getSpecies() +"', '"
+                    + animals.get(i).getCrId() +", " + animals.get(i).getAge() +", '"
+                    + animals.get(i).getSex() +"', '" + animals.get(i).getSpecies() +"', '"
                     + animals.get(i).getType() +"', " + animals.get(i).getCoId() +")");
         }
 
@@ -201,7 +201,7 @@ public class SQLZooData implements ZooAdmDAO {
         for (int i = 0; i < staff.size(); i++) {
             insertQuery.add("INSERT INTO staff (stId, age, sex, firstName, lastName, responsibility) VALUES ("
                     + staff.get(i).getCrId() +", " + staff.get(i).getAge() +", '"
-                    + staff.get(i).getSex() +"', '" + staff.get(i).getFirstName() +"', "
+                    + staff.get(i).getSex() +"', '" + staff.get(i).getFirstName() +"', '"
                     + staff.get(i).getLastName() +"', '" + staff.get(i).getResponsibility() +"')");
         }
 
