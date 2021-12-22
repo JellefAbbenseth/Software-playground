@@ -148,14 +148,23 @@ public class UserSystemInterface implements UserInterfaceDAO {
     }
 
     private void showAll() {
-
-        // Überarbeiten notwendig!!
-
         System.out.println("\n------------------------------");
         System.out.println("Unterbringungen: ");
         for (int i = 0; i < compounds.size(); i++) {
             text = compounds.get(i).display();
             System.out.println(text);
+            for (int j = 0; j < animals.size(); j++) {
+                if (animals.get(j).getCoId() == compounds.get(i).getId()) {
+                    text = animals.get(j).display();
+                    System.out.println(text);
+                }
+            }
+            for (int j = 0; j < staff.size(); j++) {
+                if (staff.get(j).getCrId() == compounds.get(i).getStId()) {
+                    text = staff.get(j).display();
+                    System.out.println(text);
+                }
+            }
         }
         System.out.println("------------------------------\n");
     }

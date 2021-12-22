@@ -1,6 +1,3 @@
-import classes.Animals;
-import classes.Compound;
-import classes.Staff;
 import connectors.SQLZooData;
 import connectors.UserSystemInterface;
 import interfaces.ZooAdmDAO;
