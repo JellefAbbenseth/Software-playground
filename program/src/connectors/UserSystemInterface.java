@@ -255,8 +255,9 @@ public class UserSystemInterface implements UserInterfaceDAO {
                             2 - Wasser
                             3 - Luft
                             4 - Land, Wasser
-                            5 - Wasser, Luft
-                            6 - Land, Wasser, Luft
+                            5 - Land, Luft
+                            6 - Wasser, Luft
+                            7 - Land, Wasser, Luft
                             """);
         System.out.println("Bitte die Art der Unterbringung angeben:");
         habitat = INPUT.nextInt();
@@ -308,25 +309,25 @@ public class UserSystemInterface implements UserInterfaceDAO {
     public void updateObject(String type) {
         if (type == "compounds") {
             System.out.println("Welche Unterbringung ändern?");
-            choice = INPUT.nextInt();
+            choice = INPUT.nextInt() - 1;
             if (choice < compounds.size()) {
-                compoundChange(choice + 1);
+                compoundChange(choice);
             } else {
                 System.out.println("Keine Unterbringung mit dieser ID vorhanden!");
             }
         } else if (type == "animals") {
             System.out.println("Welches Tier ändern?");
-            choice = INPUT.nextInt();
+            choice = INPUT.nextInt() - 1;
             if (choice < animals.size()) {
-                animalChange(choice + 1);
+                animalChange(choice);
             } else {
                 System.out.println("Kein Tier mit dieser ID vorhanden!");
             }
         } else {
             System.out.println("Welchen Mitarbeiter ändern?");
-            choice = INPUT.nextInt();
+            choice = INPUT.nextInt() - 1;
             if (choice < staff.size()) {
-                staffChange(choice + 1);
+                staffChange(choice);
             } else {
                 System.out.println("Kein Tier mit dieser ID vorhanden!");
             }

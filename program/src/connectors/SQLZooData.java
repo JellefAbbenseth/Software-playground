@@ -79,11 +79,6 @@ public class SQLZooData implements ZooAdmDAO {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        System.out.println("TestAnimals:");
-        for (int i = 0; i < animals.size(); i++) {
-            System.out.println(animals.get(i).display());
-        }
-
         return animals;
     }
 
@@ -110,11 +105,6 @@ public class SQLZooData implements ZooAdmDAO {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        System.out.println("TestStaff:");
-        for (int i = 0; i < staff.size(); i++) {
-            System.out.println(staff.get(i).display());
-        }
-
         return staff;
     }
 
@@ -139,11 +129,6 @@ public class SQLZooData implements ZooAdmDAO {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        System.out.println("TestStaff:");
-        for (int i = 0; i < compounds.size(); i++) {
-            System.out.println(compounds.get(i).display());
-        }
-
         return compounds;
     }
 

@@ -10,7 +10,6 @@ public class ZooAdministration {
     private static connectors.UserSystemInterface userInterface;
 
     public static void main(String[] args) {
-        System.out.println("Programmstart!");
 
         ArrayList<classes.Animals> animals = zooAdmin.getAnimals();
         ArrayList<classes.Compound> compounds = zooAdmin.getCompound();
@@ -18,6 +17,5 @@ public class ZooAdministration {
         userInterface = new UserSystemInterface(animals, staff, compounds, zooAdmin);
         userInterface.menu();
 
-        System.out.println("Programmende!");
     }
 }
