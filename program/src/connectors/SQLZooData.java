@@ -7,7 +7,6 @@ import interfaces.ZooAdmDAO;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.List;
 
 public class SQLZooData implements ZooAdmDAO {
     ArrayList<Animals> animals;
@@ -57,7 +56,7 @@ public class SQLZooData implements ZooAdmDAO {
     }
 
     @Override
-    public Animals getAnimals() {
+    public ArrayList<Animals> getAnimals() {
         animals = new ArrayList<>();
         ArrayList<Integer> childrenIds = new ArrayList<>();
         ArrayList<Integer> faIds = new ArrayList<>();
@@ -101,61 +100,80 @@ public class SQLZooData implements ZooAdmDAO {
         }
         System.out.println(x);
 
-        insertQuery = "SELECT * FROM family";
+        insertQuery = "SELECT faId FROM family";
         try {
+            x = 0;
             PreparedStatement selectCommand = sqlConnection.prepareStatement(insertQuery);
             ResultSet ergebnisZeile = selectCommand.executeQuery();
             while (ergebnisZeile.next()) {
-                faIds.add(ergebnisZeile.getInt("faId"));
-                anIds.add(ergebnisZeile.getInt("anId"));
-                hierarchies.add(ergebnisZeile.getString("hierarchy"));
+                if (x < ergebnisZeile.getInt("faId")) {
+                    x = ergebnisZeile.getInt("faId");
+                }
             }
-            selectCommand.close();
-        } catch (SQLException throwables) {
+        }catch (SQLException throwables) {
             throwables.printStackTrace();
         }
 
-        // Lösung finden für das Problem der Zuteilung der Familienmitglieder!!
-
-        int fId = 0;
-        int fatherId = 0;
-        int motherId = 0;
-        for (int i = 0; i < faIds.size(); i++) {
-            fId = faIds.get(i);
-            for (int j = 0; j < faIds.size(); j++) {
-                if (fId == faIds.get(j)) {
-                    if (hierarchies.equals("father")) {
-                        fatherId = anIds.get(j);
-                    } else if (hierarchies.equals("mother")) {
-                        motherId = anIds.get(j);
+        System.out.println("Anzahl: " + x);
+        if (x > 0) {
+            for (int i = 0; i < x; i++) {
+                ArrayList<Integer> children = new ArrayList<>();
+                int fatherId = 0;
+                int motherId = 0;
+                String text = "SELECT anId, hierarchy FROM family WHERE faId = " + (i + 1);
+                insertQuery = text;
+                try {
+                    PreparedStatement selectCommand = sqlConnection.prepareStatement(insertQuery);
+                    ResultSet ergebnisZeile = selectCommand.executeQuery();
+                    while (ergebnisZeile.next()) {
+                        if (ergebnisZeile.getString("hierarchy").equals("father")) {
+                            fatherId = ergebnisZeile.getInt("anId");
+                        } else if (ergebnisZeile.getString("hierarchy").equals("mother")) {
+                            motherId = ergebnisZeile.getInt("anId");
+                        } else {
+                            children.add(ergebnisZeile.getInt("anId"));
+                        }
                     }
-                } else {
-                    break;
+                    selectCommand.close();
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
                 }
-            }
-            for (int j = 0; j < animals.size(); j++) {
-                if (animals.get(j).getCrId() == anIds.get(i)) {
-                    if ("m".equals(animals.get(j).getSex())) {
+
+                System.out.println(children);
+
+                for (int j = 0; j < animals.size(); j++) {
+                    if (fatherId == animals.get(j).getCrId()) {
                         animals.get(j).setPaID(motherId);
+                        System.out.println("wife added");
+                        for (int k = 0; k < children.size(); k++) {
+                            System.out.println("child added");
+                            animals.get(j).newChild(children.get(k));
+                        }
                     }
-                    if ("w".equals(animals.get(j).getSex())) {
+                    else if (motherId == animals.get(j).getCrId()) {
                         animals.get(j).setPaID(fatherId);
+                        System.out.println("husband added");
+                        for (int k = 0; k < children.size(); k++) {
+                            animals.get(j).newChild(children.get(k));
+                        }
                     }
                 }
             }
         }
-
-
+        System.out.println("TestAnimals after adding children:");
+        for (int i = 0; i < animals.size(); i++) {
+            System.out.println(animals.get(i).display());
+        }
         return null;
     }
 
     @Override
-    public Staff getStaff() {
+    public ArrayList<Staff> getStaff() {
         return null;
     }
 
     @Override
-    public Compound getCompound() {
+    public ArrayList<Compound> getCompound() {
         return null;
     }
 
