@@ -22,6 +22,7 @@ INSERT INTO `staff` (`stId`, `age`, `sex`, `firstName`, `lastName`, `responsibil
 (1, 24, 'm', 'Tom', 'Schneider', 'Pflege'),
 (2, 32, 'w', 'Lena', 'Hauber', 'Fütterung');
 
+table habitats:
 INSERT INTO `habitats` (`haId`, `habitat`) VALUES
 (1, 'Land'),
 (2, 'Wasser'),

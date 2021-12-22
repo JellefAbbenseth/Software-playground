@@ -435,9 +435,18 @@ public class UserSystemInterface implements UserInterfaceDAO {
             case "compounds":
                 System.out.println("Bitte Id der zu löschenden Unterbringung eingeben:");
                 id = INPUT.nextInt();
+                if (id == 0) {
+                    System.out.println("Id 0 nicht zu löschen!");
+                    break;
+                }
                 for (int i = 0; i < compounds.size(); i++) {
                     if (compounds.get(i).getId() == id) {
                         compounds.remove(i);
+                    }
+                }
+                for (int i = 0; i < animals.size(); i++) {
+                    if (animals.get(i).getCoId() == id) {
+                        animals.get(i).setCoId(0);
                     }
                 }
                 break;
@@ -453,9 +462,18 @@ public class UserSystemInterface implements UserInterfaceDAO {
             case "staff":
                 System.out.println("Bitte Id des zu löschenden Mitarbeiters eingeben:");
                 id = INPUT.nextInt();
+                if (id == 0) {
+                    System.out.println("Id 0 nicht zu löschen!");
+                    break;
+                }
                 for (int i = 0; i < staff.size(); i++) {
                     if (staff.get(i).getCrId() == id) {
                         staff.remove(i);
+                    }
+                }
+                for (int i = 0; i < compounds.size(); i++) {
+                    if (compounds.get(i).getStId() == id) {
+                        compounds.get(i).setStId(0);
                     }
                 }
                 break;
