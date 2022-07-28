@@ -1,0 +1,57 @@
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Font;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+public class Game 
+{
+	JFrame window;
+	Container con; //The Container ist a Base to put several things on
+	JPanel titleNamePanel, startButtonPanel;
+	JLabel titleNameLabel;
+	Font titleFont = new Font("Times New Roman", Font.PLAIN, 90); //Custom made Font
+	Font normalFont = new Font("Times New Roman", Font.PLAIN, 30);
+	JButton startButton;
+
+	public static void main(String[] args) 
+	{
+		new Game();
+	}
+	
+	public Game() 
+	{
+		window = new JFrame();
+		window.setSize(800, 600);
+		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Makes it possible to shut down the game
+		window.getContentPane().setBackground(Color.black); 
+		window.setLayout(null); //Deactivate the standard Layout
+		window.setVisible(true); //To see the window
+		con = window.getContentPane(); 
+		
+		titleNamePanel = new JPanel();
+		titleNamePanel.setBounds(100, 100, 600, 150); //Set the place, where it should be in the Window
+		titleNamePanel.setBackground(Color.black); //For now it's blue to see it
+		titleNameLabel = new JLabel("ADVENTURE"); //Make a new Label and name it With "Adventure"
+		titleNameLabel.setForeground(Color.white); //The Color of the text is white
+		titleNameLabel.setFont(titleFont);
+		
+		startButtonPanel = new JPanel();
+		startButtonPanel.setBounds(300,400,200,100);
+		startButtonPanel.setBackground(Color.black);
+		
+		startButton = new JButton("START");
+		startButton.setBackground(Color.black);
+		startButton.setForeground(Color.white);
+		startButton.setFont(normalFont);
+		
+		titleNamePanel.add(titleNameLabel); //Add the label to the panel
+		startButtonPanel.add(startButton);
+		con.add(titleNamePanel); // Ad the Panel to the Container
+		con.add(startButtonPanel);
+	}
+
+}
