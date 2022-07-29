@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="36ba72fc-1e1b-404e-8ca1-9953cfcfe465" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/Zoo-administration/.gitattributes" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/Zoo-administration/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/Zoo-administration/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Zoo-administration.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Zoo-administration/.idea/Zoo-administration.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_8_0_27.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Zoo-administration/.idea/libraries/mysql_connector_java_8_0_27.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Zoo-administration/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Zoo-administration/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Zoo-administration/.idea/runConfigurations.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Zoo-administration/.idea/uiDesigner.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Zoo-administration/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/Zoo-administration/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/Zoo-administration/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/java_zooverwaltung_dump.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Zoo-administration/database/java_zooverwaltung_dump.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/sqlInstructions.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Zoo-administration/database/sqlInstructions.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documents/sources.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Zoo-administration/documents/sources.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documents/sqlConnection.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Zoo-administration/documents/sqlConnection.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/program/program.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Zoo-administration/program/program.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/program/src/ZooAdministration.java" beforeDir="false" afterPath="$PROJECT_DIR$/Zoo-administration/program/src/ZooAdministration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/program/src/classes/Animals.java" beforeDir="false" afterPath="$PROJECT_DIR$/Zoo-administration/program/src/classes/Animals.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/program/src/classes/Compound.java" beforeDir="false" afterPath="$PROJECT_DIR$/Zoo-administration/program/src/classes/Compound.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/program/src/classes/Creatures.java" beforeDir="false" afterPath="$PROJECT_DIR$/Zoo-administration/program/src/classes/Creatures.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/program/src/classes/Staff.java" beforeDir="false" afterPath="$PROJECT_DIR$/Zoo-administration/program/src/classes/Staff.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/program/src/connectors/SQLZooData.java" beforeDir="false" afterPath="$PROJECT_DIR$/Zoo-administration/program/src/connectors/SQLZooData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/program/src/connectors/UserSystemInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/Zoo-administration/program/src/connectors/UserSystemInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/program/src/interfaces/UserInterfaceDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Zoo-administration/program/src/interfaces/UserInterfaceDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/program/src/interfaces/ZooAdmDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Zoo-administration/program/src/interfaces/ZooAdmDAO.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2CbduArdoKEGgvlykv45k87bcCk" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Jellef.Abbenseth\Documents\Tutorials\GitHub\Zoo-administration\Zoo-administration" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="36ba72fc-1e1b-404e-8ca1-9953cfcfe465" name="Changes" comment="" />
+      <created>1659075438587</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1659075438587</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.sql" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
