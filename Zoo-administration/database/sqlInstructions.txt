@@ -1,0 +1,35 @@
+Start Data:
+
+table animals:
+INSERT INTO animals (anId, age, sex, species, type, coId)
+	VALUES 	(1, 5, 'm', 'Säugetier', 'Löwe', 1),
+    		(2, 4, 'w', 'Säugetier', 'Löwe', 1),
+    		(3, 1, 'm', 'Säugetier', 'Löwe', 1),
+    		(4, 1, 'w', 'Säugetier', 'Löwe', 1),
+    		(5, 30, 'w', 'Reptil', 'Schildkröte', 2),
+    		(6, 4, 'm', 'Vogel', 'Eule', 3);
+
+
+table compounds:
+INSERT INTO `compounds` (`coId`, `type`, `haId`, `maxResidents`, `stId`) VALUES
+(0, 'Nicht zugeordnet', 7, 999, 0),
+(1, 'Raubtierhaus', 1, 5, 1),
+(2, 'Reptilienhaus', 4, 25, 2),
+(3, 'Vogelhaus', 5, 15, 2);
+
+
+table staff:
+INSERT INTO `staff` (`stId`, `age`, `sex`, `firstName`, `lastName`, `responsibility`) VALUES
+(0, 0, 'O', 'Kein Name', 'Kein Name', 'Keine'),
+(1, 24, 'm', 'Tom', 'Schneider', 'Pflege'),
+(2, 32, 'w', 'Lena', 'Hauber', 'Fütterung');
+
+table habitats:
+INSERT INTO `habitats` (`haId`, `habitat`) VALUES
+(1, 'Land'),
+(2, 'Wasser'),
+(3, 'Luft'),
+(4, 'Land, Wasser'),
+(5, 'Land, Luft'),
+(6, 'Wasser, Luft'),
+(7, 'Land, Wasser, Luft');
